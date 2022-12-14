@@ -1,6 +1,7 @@
-import pygame
+
 import sys
 import random
+import pygame
 
 pygame.init()
 
@@ -67,15 +68,16 @@ class Food(object):
         pygame.draw.rect(surface, self.color, r)
         pygame.draw.rect(surface, black, r, 1)
     
-    def drawGrid(surface):
-        for y in range(0, int(GRID_HEIGHT)):
-            for x in range(0, int(GRID_WIDTH)):
-                if ((x + y) % 2) == 0:
-                    r = pygame.Rect((x * GRID_SIZE, y * GRID_SIZE), (GRID_SIZE, GRID_SIZE))
-                    pygame.draw.rect(surface, gray_1, r)
-                else:
-                    rr = pygame.Rect((x * GRID_SIZE, y * GRID_SIZE), (GRID_SIZE, GRID_SIZE))
-                    pygame.draw.rect(surface, gray_2, rr)
+def drawGrid(surface):
+    for y in range(0, int(GRID_HEIGHT)):
+        for x in range(0, int(GRID_WIDTH)):
+            if ((x + y) % 2) == 0:
+                r = pygame.Rect((x * GRID_SIZE, y * GRID_SIZE), (GRID_SIZE, GRID_SIZE))
+                pygame.draw.rect(surface, gray_1, r)
+            else:
+                rr = pygame.Rect((x * GRID_SIZE, y * GRID_SIZE), (GRID_SIZE, GRID_SIZE))
+                pygame.draw.rect(surface, gray_2, rr)
+
 WIDTH = 480
 HEIGHT = 480
 gray_1 = (120, 120, 120)
@@ -121,6 +123,7 @@ def main():
         text = font.render("Score {0}".format(score), True, black)
         screen.blit(text, (5, 10))
         pygame.display.update()
+
 
 main()
 
